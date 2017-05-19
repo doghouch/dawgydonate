@@ -28,7 +28,7 @@ function get_between($string, $start, $end)
     return substr($string, $ini, $len);
 }
 
-if ($amt == '5' or $amt == '10' or $amt == '20' or $amt == '40') {
+if (in_array($amt , array('5', '10', '20',  '40'))) {
     
     $url  = 'https://www.paypal.com/cgi-bin/webscr';
     $post = array(
