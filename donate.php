@@ -15,7 +15,7 @@
 
 include('config.php');
 
-$amt = $_POST['amount'];
+$amt = htmlspecialchars($_POST['amount']);
 
 function get_between($string, $start, $end)
 {
