@@ -3,5 +3,5 @@ Donation Script used by Dawgy.pw.
 
 # Supported Gateways
 - PayPal
-- ProcessOut (removed temp.)
+- ProcessOut
 - BitPay (removed temp.)
