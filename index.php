@@ -32,31 +32,16 @@ include('config.php');
       <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
       <style>
-         @import url('//fonts.googleapis.com/css?family=Lato:300|Josefin+Slab:300|Source+Sans+Pro:300');
-         body {
-         padding-top: 70px;
-         padding-bottom: 70px;
-         }
-         .ui.button.a:hover, .ui.buttons .button.a:hover {
-         background-color: #1678c2;
-         color: #fff;
-         text-shadow: none;
-         }
-         .finalbtn  {
-         margin-bottom: 70px;
-         }
-         .processor {
-         display: block;
-         margin: 0 auto;
-         }
+         @import url(//fonts.googleapis.com/css?family=Lato:300|Josefin+Slab:300|Source+Sans+Pro:300);body{padding-top:70px;padding-bottom:70px}.ui.button.a:hover,.ui.buttons .button.a:hover{background-color:#1678c2;color:#fff;text-shadow:none}.finalbtn{margin-bottom:70px}.processor{display:block;margin:0 auto}
       </style>
       <script type="text/javascript">
-         $(document).ajaxStart(function(){Pace.restart()});$(document).ready(function(){function loading(){$("#loading").show()}
-         function formResult(data){$("#loading").hide();$('.result').html(data)}
-         function onSubmit(){$('#details').submit(function(){var action=$(this).attr('action');loading();$.ajax({url:'donate.php',type:'POST',data:{amount:$('#amount').val()},success:function(data){formResult(data)},error:function(data){formResult(data)}});return!1})}
-         onSubmit()})
-         $( document ).ready(function() {
-         <?php
+         $(document).ajaxStart(function(){Pace.restart()}),$(document).ready(function(){var url='https://dawgy.pw/donate/error';function a(){$("#loading").show()}
+         function b(a){$("#loading").hide(),$(".result").html(a)
+         window.setTimeout(function(){window.location.replace(url)},2400)}
+         function c(){$("#details").submit(function(){$(this).attr("action");return a(),$.ajax({url:"donate.php",type:"POST",data:{amount:$("#amount").val(),processor:$("input[name=processor]").val()},success:function(a){b(a)},error:function(a){b(a)}}),!1})}
+         $("#paypal").click(function(){$("input[name=processor]").val("paypal")}),$("#other").click(function(){$("input[name=processor]").val("other")}),c()})
+                  $( document ).ready(function() {
+                  <?php
             if($_GET['amt']=='5') {
             $amount = '5';
             echo '$( "#amt" ).html("$5");';
@@ -80,7 +65,9 @@ include('config.php');
             }
             }
             ?>
-         $("#1").click(function(){event.preventDefault();history.pushState(null,null,'?amt=5');$('input[name="amount"]').val('5');$("#amt").html('$5')});$("#2").click(function(){event.preventDefault();history.pushState(null,null,'?amt=10');$('input[name="amount"]').val('10');$("#amt").html('$10')});$("#3").click(function(){event.preventDefault();history.pushState(null,null,'?amt=20');$('input[name="amount"]').val('20');$("#amt").html('$20')});$("#4").click(function(){event.preventDefault();history.pushState(null,null,'?amt=40');$('input[name="amount"]').val('40');$("#amt").html('$40')})})
+                  $("#1").click(function(){event.preventDefault();history.pushState(null,null,'?amt=5');$('input[name="amount"]').val('5');$("#amt").html('$5')});$("#2").click(function(){event.preventDefault();history.pushState(null,null,'?amt=10');$('input[name="amount"]').val('10');$("#amt").html('$10')});$("#3").click(function(){event.preventDefault();history.pushState(null,null,'?amt=20');$('input[name="amount"]').val('20');$("#amt").html('$20')});$("#4").click(function(){event.preventDefault();history.pushState(null,null,'?amt=40');$('input[name="amount"]').val('40');$("#amt").html('$40')})})
+                        
+         
                
       </script>
    </head>
@@ -112,11 +99,12 @@ include('config.php');
                         <p style="text-align: center;">WE ACCEPT:</p>
                         <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" class="processor" alt="acceptedpayments">
                      </div>
-                     <button class="ui button standard finalbtn" style="padding-bottom: 7px;">Pay with &nbsp; <img src="assets/paypal.png" alt="PayPal" style="width: 23%;"></button>
+                     <input type="hidden" value="" name="processor">
+                     <button class="ui button standard finalbtn" id="paypal" style="margin-bottom: 12px;"><img src="assets/paypal.png" alt="PayPal" style="width: 23%;"></button>
+                     <button class="ui button standard finalbtn" id="other"><img src="assets/btc.png" alt="Bitcoin" style="width: 21%;"></button>
+                </div>
                </form>
-               </div>
             </div>
          </div>
       </div>
    </body>
-</html>
