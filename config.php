@@ -17,16 +17,15 @@
 $site_title = "dawgy.pw: Donate";
 
 # Header (large title)
-$header_title = "Dawgy.pw";
+$header_title = "DawgyTIPS";
 
 # Text below the title, thank you message
-$thankyou = "Thank you for supporting me!";
+$thankyou = "Thank you for supporting me! :)";
+$paypaladdress= "thankyou@dawgy.pw";
 
-# Your PayPal email address
-$paypaladdress = "thankyou@dawgy.pw";
-
-# Custom Theme is optional
-$paypalstyle = "dawgy";
+# Access Token for ProcessOut
+$accessproject = "project_key";
+$accesskey = "private_key";
 
 # URL to go to when user cancels
 $cancel_url = "https://dawgy.pw/donate/error";
